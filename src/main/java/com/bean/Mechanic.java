@@ -1,5 +1,9 @@
 package com.bean;
 
+import java.util.List;
+
+import com.dao.TaskDao;
+
 public class Mechanic extends Employee {
 	public Mechanic() {
 		super();
@@ -9,9 +13,20 @@ public class Mechanic extends Employee {
 		super(id, username, firstName, lastName, email, mobileNumber, role, address, isActive);
 	}
 
-    @Override
-    public void performRoleSpecificTask() {
-        System.out.println("Mechanic task: Working on assigned vehicle repairs.");
+	@Override
+    public String performRoleSpecificTask() {
+        return "Mechanic task: Repairing vehicles and completing assigned tasks.";
     }
+	
+	@Override
+    public List<Task> viewTasks() {
+        return TaskDao.getTasksAssignedToMechanic(this.getId()); // Retrieve tasks specific to this mechanic
+    }
+	
+	// Mechanic-specific method
+    public boolean completeTask(int taskId) {
+        return TaskDao.markTaskAsCompleted(taskId, this.getId());
+    }
+	
 }
 
