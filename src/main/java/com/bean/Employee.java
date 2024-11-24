@@ -1,5 +1,7 @@
 package com.bean;
 
+import java.util.List;
+
 public abstract class Employee {
 	private int id;
     private String username;
@@ -29,7 +31,14 @@ public abstract class Employee {
 		this.isActive = isActive;
 	}
     
-    public abstract void performRoleSpecificTask();
+    // Abstract methods
+    public abstract String performRoleSpecificTask(); // Returns a message about the task performed
+    public abstract List<Task> viewTasks(); // Returns a list of tasks
+    
+    // Shared methods
+    public void sendNotification(String message) {
+        System.out.println("Notification to " + this.username + ": " + message);
+    }
 
 
 	public int getId() {
