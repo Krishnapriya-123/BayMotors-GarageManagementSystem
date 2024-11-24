@@ -200,14 +200,94 @@
 		    </div>
 		<% } %>
 
-        <!-- Dynamic Content for Mechanic -->
+        <!-- Mechanic Dashboard -->
         <% if ("MECHANIC".equals(employeeRole)) { %>
+            <!-- Quick Stats Row -->
             <div class="row mb-4">
-                <div class="col-md-6">
-                    <a href="" class="btn btn-primary btn-block">View Assigned Tasks</a>
+                <div class="col-md-4">
+                    <div class="card bg-primary text-white">
+                        <div class="card-body">
+                            <h5 class="card-title">Total Tasks</h5>
+                            <h2 class="mb-0">15</h2> <!-- Replace with dynamic count -->
+                        </div>
+                    </div>
                 </div>
-                <div class="col-md-6">
-                    <a href="" class="btn btn-primary btn-block">Complete Task</a>
+                <div class="col-md-4">
+                    <div class="card bg-success text-white">
+                        <div class="card-body">
+                            <h5 class="card-title">Suppliers</h5>
+                            <h2 class="mb-0">8</h2> <!-- Replace with dynamic count -->
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card bg-warning text-white">
+                        <div class="card-body">
+                            <h5 class="card-title">Manufacturers</h5>
+                            <h2 class="mb-0">5</h2> <!-- Replace with dynamic count -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+			<!-- Action Center -->
+	        <div class="col-md-12">
+	            <div class="card">
+	                <div class="card-header bg-info text-white">
+	                    <h5 class="card-title mb-0">Suppliers & Manufacturers</h5>
+	                </div>
+	                <div class="card-body">
+	                    <div class="row">
+	                        <div class="col-md-6">
+	                            <div class="d-grid">
+	                                <a href="<%= request.getContextPath() %>/ListSuppliersServlet" class="btn btn-outline-info mb-3">
+	                                    <i class="bi bi-plus-circle"></i> List Manufacturers
+	                                </a>
+	                            </div>
+	                        </div>
+	                        <div class="col-md-6">
+	                            <div class="d-grid">
+	                                <a href="<%= request.getContextPath() %>/ListManufacturersServlet" class="btn btn-outline-info mb-3">
+	                                    <i class="bi bi-truck"></i> List Suppliers
+	                                </a>
+	                            </div>
+	                        </div>
+	                        
+	                    </div>
+	                </div>
+	            </div>
+	        </div>
+
+            <!-- Recent Tasks -->
+            <div class="card mt-4">
+                <div class="card-header bg-dark text-white">
+                    <h5 class="card-title mb-0">Recent Tasks</h5>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-striped table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Description</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>2024-11-23</td>
+                                    <td>Replaced engine part</td>
+                                    <td><span class="badge bg-success">Completed</span></td>
+                                </tr>
+                                <tr>
+                                    <td>2024-11-22</td>
+                                    <td>Serviced brakes</td>
+                                    <td><span class="badge bg-warning">Pending</span></td>
+                                </tr>
+                                <!-- Add more rows dynamically -->
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         <% } %>
